@@ -10,7 +10,8 @@ Pod::Spec.new do |s|
   s.summary = 'An XMPP Framework in Objective-C for the Mac / iOS development community.'
   s.homepage = 'https://github.com/robbiehanson/XMPPFramework'
   s.author = { 'Robbie Hanson' => 'robbiehanson@deusty.com' }
-  s.source = { :git => 'https://github.com/robbiehanson/XMPPFramework.git', :tag => s.version }
+  s.source = { :path => './'}
+  # s.source = { :git => 'https://github.com/robbiehanson/XMPPFramework.git', :tag => s.version }
   # s.source = { :git => 'https://github.com/robbiehanson/XMPPFramework.git', :branch => 'master' }
   s.resources = [ '**/*.{xcdatamodel,xcdatamodeld}']
 
@@ -25,7 +26,8 @@ Pod::Spec.new do |s|
 
   s.source_files = ['Core/**/*.{h,m}',
                     'Authentication/**/*.{h,m}', 'Categories/**/*.{h,m}',
-                    'Utilities/**/*.{h,m}', 'Extensions/**/*.{h,m}']
+                    'Utilities/**/*.{h,m}', 'Extensions/**/*.{h,m}', 
+                  'Websockets/**/*.{h,m}']
   s.ios.exclude_files = 'Extensions/SystemInputActivityMonitor/**/*.{h,m}'
   s.libraries = 'xml2', 'resolv'
   s.frameworks = 'CoreData', 'SystemConfiguration', 'CoreLocation'
