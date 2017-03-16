@@ -1246,6 +1246,7 @@
 		0D44BB641E537110000930E0 /* XMPPStringPrep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStringPrep.m; sourceTree = "<group>"; };
 		0D44BB651E537110000930E0 /* XMPPTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTimer.h; sourceTree = "<group>"; };
 		0D44BB661E537110000930E0 /* XMPPTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTimer.m; sourceTree = "<group>"; };
+		556D60B41E7ADB4800330979 /* TransportSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportSocket.h; sourceTree = "<group>"; };
 		D9DCD11F1E6250920010D1C7 /* XMPPBandwidthMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPBandwidthMonitor.h; sourceTree = "<group>"; };
 		D9DCD1201E6250920010D1C7 /* XMPPBandwidthMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPBandwidthMonitor.m; sourceTree = "<group>"; };
 		D9DCD1221E6250920010D1C7 /* XMPPCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPCoreDataStorage.h; sourceTree = "<group>"; };
@@ -1563,6 +1564,7 @@
 		0D44BAF51E5370E2000930E0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				551825011E7ADACA00FC6FA0 /* Websockets */,
 				D9DCD11D1E6250920010D1C7 /* Extensions */,
 				0D44BB581E537110000930E0 /* Utilities */,
 				0D44BB301E537105000930E0 /* Authentication */,
@@ -1723,6 +1725,15 @@
 				D9DCD3391E6250C50010D1C7 /* CocoaAsyncSocket.xcodeproj */,
 			);
 			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		551825011E7ADACA00FC6FA0 /* Websockets */ = {
+			isa = PBXGroup;
+			children = (
+				556D60B41E7ADB4800330979 /* TransportSocket.h */,
+			);
+			name = Websockets;
+			path = WebSockets;
 			sourceTree = "<group>";
 		};
 		D9DCD11D1E6250920010D1C7 /* Extensions */ = {

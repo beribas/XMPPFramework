@@ -8,6 +8,7 @@
 
 #import <objc/runtime.h>
 #import <libkern/OSAtomic.h>
+#import "TransportSocket.h"
 
 #if TARGET_OS_IPHONE
   // Note: You may need to add the CFNetwork Framework to your project
@@ -93,7 +94,7 @@ enum XMPPStreamConfig
 	
 	XMPPStreamState state;
 	
-	GCDAsyncSocket *asyncSocket;
+	id<TransportSocket> asyncSocket;
 	
 	uint64_t numberOfBytesSent;
 	uint64_t numberOfBytesReceived;
