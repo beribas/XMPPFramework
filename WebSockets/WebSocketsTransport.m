@@ -72,10 +72,19 @@ static const int xmppLogLevel = XMPP_LOG_LEVEL_WARN;
     });
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+    dispatch_async(self.delegateQueue, ^{
+        [self.delegate socketDidDisconnect:nil withError:error];
+    });
     
 }
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
-    
+    NSError *error;
+    if (!wasClean) {
+        error = [NSError errorWithDomain:@"WebSocketErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:reason}];
+    }
+    dispatch_async(self.delegateQueue, ^{
+        [self.delegate socketDidDisconnect:nil withError:error];
+    });
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload {
     
