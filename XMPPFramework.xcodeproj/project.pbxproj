@@ -65,6 +65,12 @@
 		0D44BB721E537110000930E0 /* XMPPStringPrep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44BB641E537110000930E0 /* XMPPStringPrep.m */; };
 		0D44BB731E537110000930E0 /* XMPPTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D44BB651E537110000930E0 /* XMPPTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D44BB741E537110000930E0 /* XMPPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D44BB661E537110000930E0 /* XMPPTimer.m */; };
+		556D60BD1E7AE1E500330979 /* WebSocketsTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 556D60BB1E7AE1E500330979 /* WebSocketsTransport.h */; };
+		556D60BE1E7AE1E500330979 /* WebSocketsTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 556D60BB1E7AE1E500330979 /* WebSocketsTransport.h */; };
+		556D60BF1E7AE1E500330979 /* WebSocketsTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 556D60BB1E7AE1E500330979 /* WebSocketsTransport.h */; };
+		556D60C01E7AE1E500330979 /* WebSocketsTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 556D60BC1E7AE1E500330979 /* WebSocketsTransport.m */; };
+		556D60C11E7AE1E500330979 /* WebSocketsTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 556D60BC1E7AE1E500330979 /* WebSocketsTransport.m */; };
+		556D60C21E7AE1E500330979 /* WebSocketsTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 556D60BC1E7AE1E500330979 /* WebSocketsTransport.m */; };
 		D9DCD24B1E6250930010D1C7 /* XMPPBandwidthMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = D9DCD11F1E6250920010D1C7 /* XMPPBandwidthMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9DCD24C1E6250930010D1C7 /* XMPPBandwidthMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DCD1201E6250920010D1C7 /* XMPPBandwidthMonitor.m */; };
 		D9DCD24D1E6250930010D1C7 /* XMPPCoreDataStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = D9DCD1221E6250920010D1C7 /* XMPPCoreDataStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1247,6 +1253,8 @@
 		0D44BB651E537110000930E0 /* XMPPTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTimer.h; sourceTree = "<group>"; };
 		0D44BB661E537110000930E0 /* XMPPTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTimer.m; sourceTree = "<group>"; };
 		556D60B41E7ADB4800330979 /* TransportSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportSocket.h; sourceTree = "<group>"; };
+		556D60BB1E7AE1E500330979 /* WebSocketsTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketsTransport.h; sourceTree = "<group>"; };
+		556D60BC1E7AE1E500330979 /* WebSocketsTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketsTransport.m; sourceTree = "<group>"; };
 		D9DCD11F1E6250920010D1C7 /* XMPPBandwidthMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPBandwidthMonitor.h; sourceTree = "<group>"; };
 		D9DCD1201E6250920010D1C7 /* XMPPBandwidthMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPBandwidthMonitor.m; sourceTree = "<group>"; };
 		D9DCD1221E6250920010D1C7 /* XMPPCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPCoreDataStorage.h; sourceTree = "<group>"; };
@@ -1731,6 +1739,8 @@
 			isa = PBXGroup;
 			children = (
 				556D60B41E7ADB4800330979 /* TransportSocket.h */,
+				556D60BB1E7AE1E500330979 /* WebSocketsTransport.h */,
+				556D60BC1E7AE1E500330979 /* WebSocketsTransport.m */,
 			);
 			name = Websockets;
 			path = WebSockets;
@@ -2592,6 +2602,7 @@
 				D9DCD2DC1E6250930010D1C7 /* XMPPSoftwareVersion.h in Headers */,
 				D9DCD3141E6250930010D1C7 /* XMPPAttentionModule.h in Headers */,
 				D9DCD29E1E6250930010D1C7 /* XMPPRoomMemoryStorage.h in Headers */,
+				556D60BD1E7AE1E500330979 /* WebSocketsTransport.h in Headers */,
 				D9DCD3221E6250930010D1C7 /* XMPPMessage+XEP_0333.h in Headers */,
 				D9DCD2AC1E6250930010D1C7 /* XMPPRoomPrivate.h in Headers */,
 				D9DCD2641E6250930010D1C7 /* XMPPIQ+OMEMO.h in Headers */,
@@ -2750,6 +2761,7 @@
 				D9DCD4D71E6256D90010D1C7 /* XMPPSoftwareVersion.h in Headers */,
 				D9DCD4D81E6256D90010D1C7 /* XMPPAttentionModule.h in Headers */,
 				D9DCD4D91E6256D90010D1C7 /* XMPPRoomMemoryStorage.h in Headers */,
+				556D60BE1E7AE1E500330979 /* WebSocketsTransport.h in Headers */,
 				D9DCD4DA1E6256D90010D1C7 /* XMPPMessage+XEP_0333.h in Headers */,
 				D9DCD4DB1E6256D90010D1C7 /* XMPPRoomPrivate.h in Headers */,
 				D9DCD4DC1E6256D90010D1C7 /* XMPPIQ+OMEMO.h in Headers */,
@@ -2908,6 +2920,7 @@
 				D9DCD63A1E6258CF0010D1C7 /* XMPPSoftwareVersion.h in Headers */,
 				D9DCD63B1E6258CF0010D1C7 /* XMPPAttentionModule.h in Headers */,
 				D9DCD63C1E6258CF0010D1C7 /* XMPPRoomMemoryStorage.h in Headers */,
+				556D60BF1E7AE1E500330979 /* WebSocketsTransport.h in Headers */,
 				D9DCD63D1E6258CF0010D1C7 /* XMPPMessage+XEP_0333.h in Headers */,
 				D9DCD63E1E6258CF0010D1C7 /* XMPPRoomPrivate.h in Headers */,
 				D9DCD63F1E6258CF0010D1C7 /* XMPPIQ+OMEMO.h in Headers */,
@@ -3393,6 +3406,7 @@
 				D9DCD2EB1E6250930010D1C7 /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				D9DCD2A51E6250930010D1C7 /* XMPPMessage+XEP0045.m in Sources */,
 				D9DCD2DF1E6250930010D1C7 /* XMPPTransports.m in Sources */,
+				556D60C01E7AE1E500330979 /* WebSocketsTransport.m in Sources */,
 				D9DCD2781E6250930010D1C7 /* XMPPRosterMemoryStorage.m in Sources */,
 				0D44BB1E1E5370ED000930E0 /* XMPPParser.m in Sources */,
 				D9DCD2881E6250930010D1C7 /* XMPPJabberRPCModule.m in Sources */,
@@ -3543,6 +3557,7 @@
 				D9DCD4351E6256D90010D1C7 /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				D9DCD4361E6256D90010D1C7 /* XMPPMessage+XEP0045.m in Sources */,
 				D9DCD4371E6256D90010D1C7 /* XMPPTransports.m in Sources */,
+				556D60C11E7AE1E500330979 /* WebSocketsTransport.m in Sources */,
 				D9DCD4381E6256D90010D1C7 /* XMPPRosterMemoryStorage.m in Sources */,
 				D9DCD4391E6256D90010D1C7 /* XMPPParser.m in Sources */,
 				D9DCD43A1E6256D90010D1C7 /* XMPPJabberRPCModule.m in Sources */,
@@ -3693,6 +3708,7 @@
 				D9DCD5981E6258CF0010D1C7 /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				D9DCD5991E6258CF0010D1C7 /* XMPPMessage+XEP0045.m in Sources */,
 				D9DCD59A1E6258CF0010D1C7 /* XMPPTransports.m in Sources */,
+				556D60C21E7AE1E500330979 /* WebSocketsTransport.m in Sources */,
 				D9DCD59B1E6258CF0010D1C7 /* XMPPRosterMemoryStorage.m in Sources */,
 				D9DCD59C1E6258CF0010D1C7 /* XMPPParser.m in Sources */,
 				D9DCD59D1E6258CF0010D1C7 /* XMPPJabberRPCModule.m in Sources */,

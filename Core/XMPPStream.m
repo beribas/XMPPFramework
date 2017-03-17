@@ -9,6 +9,7 @@
 #import <objc/runtime.h>
 #import <libkern/OSAtomic.h>
 #import "TransportSocket.h"
+#import "WebSocketsTransport.h"
 
 #if TARGET_OS_IPHONE
   // Note: You may need to add the CFNetwork Framework to your project
@@ -213,7 +214,7 @@ enum XMPPStreamConfig
 		[self commonInit];
 		
 		// Initialize socket
-        asyncSocket = [self newSocket];
+        asyncSocket = [self newWebSocket];
 	}
 	return self;
 }
@@ -3270,9 +3271,9 @@ enum XMPPStreamConfig
 		XMPPLogSend(@"SEND: %@", s1);
 		numberOfBytesSent += [outgoingData length];
 		
-		[asyncSocket writeData:outgoingData
-				   withTimeout:TIMEOUT_XMPP_WRITE
-						   tag:TAG_XMPP_WRITE_START];
+//		[asyncSocket writeData:outgoingData
+//				   withTimeout:TIMEOUT_XMPP_WRITE
+//						   tag:TAG_XMPP_WRITE_START];
 		
 		[self setDidStartNegotiation:YES];
 	}
@@ -3337,10 +3338,27 @@ enum XMPPStreamConfig
             s2 = [NSString stringWithFormat:temp, xmlns, xmlns_stream];
         }
     }
+    
+    // TCP connection was just opened - We need to include the opening XML stanza
+    NSString *s1 = @"<?xml version='1.0'?>";
+    
+//    NSData *outgoingData = [s1 dataUsingEncoding:NSUTF8StringEncoding];
+    
+//    XMPPLogSend(@"SEND: %@", s1);
+//    numberOfBytesSent += [outgoingData length];
+    
+    //		[asyncSocket writeData:outgoingData
+    //				   withTimeout:TIMEOUT_XMPP_WRITE
+    //						   tag:TAG_XMPP_WRITE_START];
+    
+    [self setDidStartNegotiation:YES];
+    
+    
+    NSString *fullOpening = [s1 stringByAppendingString:s2];
 	
-	NSData *outgoingData = [s2 dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *outgoingData = [fullOpening dataUsingEncoding:NSUTF8StringEncoding];
 	
-	XMPPLogSend(@"SEND: %@", s2);
+	XMPPLogSend(@"SEND: %@", fullOpening);
 	numberOfBytesSent += [outgoingData length];
 	
 	[asyncSocket writeData:outgoingData
@@ -5051,6 +5069,13 @@ enum XMPPStreamConfig
     GCDAsyncSocket *socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:xmppQueue];
     socket.IPv4PreferredOverIPv6 = !self.preferIPv6;
     return socket;
+}
+
+- (WebSocketsTransport *) newWebSocket {
+    WebSocketsTransport *ws = [WebSocketsTransport new];
+    ws.delegate = self;
+    ws.delegateQueue = xmppQueue;
+    return ws;
 }
 
 @end

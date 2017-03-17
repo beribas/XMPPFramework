@@ -6,9 +6,7 @@
 //  Copyright © 2017 robbiehanson. All rights reserved.
 //
 
-#ifndef TransportSocket_h
-#define TransportSocket_h
-
+@import CocoaAsyncSocket;
 
 @protocol TransportSocket <NSObject>
 
@@ -31,4 +29,3 @@
 
 @end
 
-#endif /* TransportSocket_h */
