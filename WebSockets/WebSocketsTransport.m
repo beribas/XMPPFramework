@@ -10,6 +10,11 @@
 #import "XMPPLogging.h"
 @import SocketRocket;
 
+NSString *const WebSocketErrorDomain = @"WebSocketErrorDomain";
+typedef NS_ENUM(NSInteger, WebSocketError) {
+    WebSocketErrorBadParam = 0
+};
+
 
 #if DEBUG
 static const int xmppLogLevel = XMPP_LOG_LEVEL_INFO; // XMPP_LOG_LEVEL_VERBOSE | XMPP_LOG_FLAG_TRACE;
@@ -26,9 +31,21 @@ static const int xmppLogLevel = XMPP_LOG_LEVEL_WARN;
 @implementation WebSocketsTransport
 
 - (BOOL)connectToHost:(NSString *)host onPort:(uint16_t)port error:(NSError *__autoreleasing *)errPtr {
-    NSString *fullURLString = [NSString stringWithFormat:@"wss://%@:%d/websocket", host, 14378];
-    NSURL *url = [NSURL URLWithString:fullURLString];
-    self.webSocket = [[SRWebSocket alloc] initWithURL:url protocols:@[@"xmpp"] allowsUntrustedSSLCertificates:YES];
+    if (host == nil || host.length == 0) {
+        *errPtr = [NSError errorWithDomain:WebSocketErrorDomain code:WebSocketErrorBadParam userInfo:nil];
+        return NO;
+    }
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:host];
+    if (!urlComponents.port) {
+        urlComponents.port = @(port);
+    }
+    
+    NSURL *url = urlComponents.URL;
+    NSCParameterAssert(url);
+    
+    XMPPLogInfo(@"\n\nConnecting over web sockets to url:\n%@", url);
+    
+    self.webSocket = [[SRWebSocket alloc] initWithURL:url protocols:@[@"xmpp"] allowsUntrustedSSLCertificates:NO];
     self.webSocket.delegate = self;
     [self.webSocket open];
     return YES;
