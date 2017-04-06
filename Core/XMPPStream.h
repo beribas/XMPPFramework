@@ -60,6 +60,12 @@ extern const NSTimeInterval XMPPStreamTimeoutNone;
 - (id)init;
 
 /**
+ * Standart client to server connection using websocket.
+ **/
++ (instancetype)webSocketStream;
+
+
+/**
  * Peer to Peer XMPP initialization.
  * The stream is a direct client to client connection as outlined in XEP-0174.
 **/

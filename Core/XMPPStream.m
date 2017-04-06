@@ -144,6 +144,7 @@ enum XMPPStreamConfig
 	NSCountedSet *customElementNames;
 	
 	id userTag;
+    BOOL isUsingWebsocket;
 }
 
 @end
@@ -214,9 +215,30 @@ enum XMPPStreamConfig
 		[self commonInit];
 		
 		// Initialize socket
-        asyncSocket = [self newWebSocket];
+        asyncSocket = [self newSocket];
 	}
 	return self;
+}
+
+- (id) initWithWebSocket {
+    if ((self = [super init]))
+    {
+        // Common initialization
+        [self commonInit];
+        
+        // Initialize socket
+        asyncSocket = [self newWebSocket];
+        isUsingWebsocket = YES;
+    }
+    return self;
+}
+
+/**
+ * Standart client to server connection using websocket.
+ **/
++ (instancetype)webSocketStream
+{
+    return [[XMPPStream alloc] initWithWebSocket];
 }
 
 /**
