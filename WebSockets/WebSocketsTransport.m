@@ -57,12 +57,38 @@ static const int xmppLogLevel = XMPP_LOG_LEVEL_WARN;
     [self.webSocket send:data];
 }
 
-- (void)readDataWithTimeout:(NSTimeInterval)timeout tag:(long)tag {
-    
-}
-
 - (void)disconnect {
     [self.webSocket close];
+}
+
+#pragma mark - Unused methods
+
+- (void)readDataWithTimeout:(NSTimeInterval)timeout tag:(long)tag {
+    // No need to do enything here for web socket
+}
+
+- (void)setDelegate:(id)newDelegate delegateQueue:(dispatch_queue_t)newDelegateQueue {
+
+}
+
+- (BOOL)connectToAddress:(NSData *)remoteAddr error:(NSError **)errPtr {
+    return NO;
+}
+
+- (void)disconnectAfterWriting {
+
+}
+
+- (void)startTLS:(NSDictionary *)tlsSettings {
+
+}
+
+- (void)performBlock:(dispatch_block_t)block {
+
+}
+
+- (BOOL)enableBackgroundingOnSocket {
+    return NO;
 }
 
 #pragma mark SRWebSocketDelegate
