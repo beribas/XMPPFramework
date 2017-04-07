@@ -1,12 +1,12 @@
 //
-//  WebSocketsTransport.m
+//  WebSocketTransport.m
 //  XMPPFramework
 //
 //  Created by Oleg Langer on 16.03.17.
 //  Copyright © 2017 robbiehanson. All rights reserved.
 //
 
-#import "WebSocketsTransport.h"
+#import "WebSocketTransport.h"
 #import "XMPPLogging.h"
 @import SocketRocket;
 
@@ -22,13 +22,13 @@ static const int xmppLogLevel = XMPP_LOG_LEVEL_INFO; // XMPP_LOG_LEVEL_VERBOSE |
 static const int xmppLogLevel = XMPP_LOG_LEVEL_WARN;
 #endif
 
-@interface WebSocketsTransport () <SRWebSocketDelegate>
+@interface WebSocketTransport () <SRWebSocketDelegate>
 
 @property (nonatomic, strong) SRWebSocket *webSocket;
 
 @end
 
-@implementation WebSocketsTransport
+@implementation WebSocketTransport
 
 - (BOOL)connectToHost:(NSString *)host onPort:(uint16_t)port error:(NSError *__autoreleasing *)errPtr {
     if (host == nil || host.length == 0) {

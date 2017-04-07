@@ -9,7 +9,7 @@
 #import <objc/runtime.h>
 #import <libkern/OSAtomic.h>
 #import "TransportSocket.h"
-#import "WebSocketsTransport.h"
+#import "WebSocketTransport.h"
 
 #if TARGET_OS_IPHONE
   // Note: You may need to add the CFNetwork Framework to your project
@@ -5092,8 +5092,8 @@ enum XMPPStreamConfig
     return socket;
 }
 
-- (WebSocketsTransport *) newWebSocket {
-    WebSocketsTransport *ws = [WebSocketsTransport new];
+- (WebSocketTransport *) newWebSocket {
+    WebSocketTransport *ws = [WebSocketTransport new];
     ws.delegate = self;
     ws.delegateQueue = xmppQueue;
     return ws;

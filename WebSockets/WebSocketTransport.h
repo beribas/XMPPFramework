@@ -1,5 +1,5 @@
 //
-//  WebSocketsTransport.h
+//  WebSocketTransport.h
 //  XMPPFramework
 //
 //  Created by Oleg Langer on 16.03.17.
@@ -11,7 +11,7 @@
 @import CocoaAsyncSocket;
 
 
-@interface WebSocketsTransport : NSObject <TransportSocket>
+@interface WebSocketTransport : NSObject <TransportSocket>
 @property (nonatomic, weak) id<GCDAsyncSocketDelegate> delegate;
 @property dispatch_queue_t delegateQueue;
 
