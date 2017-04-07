@@ -3283,19 +3283,19 @@ enum XMPPStreamConfig
 	
 	XMPPLogTrace();
 	
-	if (![self didStartNegotiation])
+	NSString *s1 = @"<?xml version='1.0'?>";
+    // If we use web socket we will send the full opening stanza at the end of the method
+	if (![self didStartNegotiation] && !isUsingWebsocket)
 	{
 		// TCP connection was just opened - We need to include the opening XML stanza
-		NSString *s1 = @"<?xml version='1.0'?>";
-		
 		NSData *outgoingData = [s1 dataUsingEncoding:NSUTF8StringEncoding];
 		
 		XMPPLogSend(@"SEND: %@", s1);
 		numberOfBytesSent += [outgoingData length];
 		
-//		[asyncSocket writeData:outgoingData
-//				   withTimeout:TIMEOUT_XMPP_WRITE
-//						   tag:TAG_XMPP_WRITE_START];
+        [asyncSocket writeData:outgoingData
+                   withTimeout:TIMEOUT_XMPP_WRITE
+                           tag:TAG_XMPP_WRITE_START];
 		
 		[self setDidStartNegotiation:YES];
 	}
@@ -3361,32 +3361,31 @@ enum XMPPStreamConfig
         }
     }
     
-    // TCP connection was just opened - We need to include the opening XML stanza
-    NSString *s1 = @"<?xml version='1.0'?>";
     
-//    NSData *outgoingData = [s1 dataUsingEncoding:NSUTF8StringEncoding];
-    
-//    XMPPLogSend(@"SEND: %@", s1);
-//    numberOfBytesSent += [outgoingData length];
-    
-    //		[asyncSocket writeData:outgoingData
-    //				   withTimeout:TIMEOUT_XMPP_WRITE
-    //						   tag:TAG_XMPP_WRITE_START];
-    
-    [self setDidStartNegotiation:YES];
-    
-    
-    NSString *fullOpening = [s1 stringByAppendingString:s2];
-	
-	NSData *outgoingData = [fullOpening dataUsingEncoding:NSUTF8StringEncoding];
-	
-	XMPPLogSend(@"SEND: %@", fullOpening);
-	numberOfBytesSent += [outgoingData length];
-	
+	NSData *outgoingData;
+    if (isUsingWebsocket) {
+
+        [self setDidStartNegotiation:YES];
+
+        NSString *fullOpening = [s1 stringByAppendingString:s2];
+
+		outgoingData = [fullOpening dataUsingEncoding:NSUTF8StringEncoding];
+        
+        XMPPLogSend(@"SEND: %@", fullOpening);
+        numberOfBytesSent += [outgoingData length];
+        
+    }
+    else {
+		outgoingData= [s2 dataUsingEncoding:NSUTF8StringEncoding];
+		XMPPLogSend(@"SEND: %@", s2);
+        numberOfBytesSent += [outgoingData length];
+        
+    }
+
 	[asyncSocket writeData:outgoingData
 			   withTimeout:TIMEOUT_XMPP_WRITE
 					   tag:TAG_XMPP_WRITE_START];
-	
+
 	// Update status
 	state = STATE_XMPP_OPENING;
 }

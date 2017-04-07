@@ -4,6 +4,7 @@
 
 #import "XMPPStream.h"
 #import "XMPPModule.h"
+#import "TransportSocket.h"
 
 // Define the various states we'll use to track our progress
 typedef NS_ENUM(NSInteger, XMPPStreamState) {
@@ -66,7 +67,7 @@ extern NSString *const XMPPStreamDidChangeMyJIDNotification;
  * You shouldn't mess with this unless you really
  * know what you're doing.
  */
-@property (nonatomic, readonly) GCDAsyncSocket *asyncSocket;
+@property (nonatomic, readonly) id<TransportSocket> asyncSocket;
 
 /**
  * Returns the current state of the xmppStream.
