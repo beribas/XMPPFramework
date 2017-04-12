@@ -25,7 +25,7 @@
 
 @end
 
-@interface GCDAsyncSocket (ADDON) <TransportSocket>
+@interface GCDAsyncSocket (TransportSocket) <TransportSocket>
 
 @end
 
