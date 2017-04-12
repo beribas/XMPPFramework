@@ -97,11 +97,11 @@ static const int xmppLogLevel = XMPP_LOG_LEVEL_WARN;
 // or NSData if the server is using binary.
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     if ([message isKindOfClass:[NSString class]]) {
-        NSLog(@"%s%@", __PRETTY_FUNCTION__, message);
+        XMPPLogInfo(@"%s%@", __PRETTY_FUNCTION__, message);
     }
     else if ([message isKindOfClass:[NSData class]]){
         NSString *str = [[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding];
-        NSLog(@"%s%@", __PRETTY_FUNCTION__, str);
+        XMPPLogInfo(@"%s%@", __PRETTY_FUNCTION__, str);
         
         dispatch_async(self.delegateQueue, ^{
             [self.delegate socket:nil didReadData:message withTag:0];
